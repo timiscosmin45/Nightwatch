@@ -1,0 +1,24 @@
+14:50:39.624 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+14:50:39.719 INFO [GridLauncherV3.lambda$buildLaunchers$3] - Launching a standalone Selenium Server on port 4444
+2019-07-30 14:50:39.798:INFO::main: Logging initialized @545ms to org.seleniumhq.jetty9.util.log.StdErrLog
+14:50:40.158 INFO [WebDriverServlet.<init>] - Initialising WebDriverServlet
+14:50:40.692 INFO [SeleniumServer.boot] - Selenium Server is up and running on port 4444
+14:50:41.028 INFO [ActiveSessionFactory.apply] - Capabilities are: {
+  "acceptSslCerts": true,
+  "browserName": "firefox",
+  "javascriptEnabled": true
+}
+14:50:41.032 INFO [ActiveSessionFactory.lambda$apply$11] - Matched factory org.openqa.selenium.grid.session.remote.ServicedSession$Factory (provider: org.openqa.selenium.firefox.GeckoDriverService)
+1564487441926	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\VALENT~1.TIM\\AppData\\Local\\Temp\\rust_mozprofile.mGiXnQ4zCayJ"
+1564487442548	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1564487442548	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1564487442549	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1564487442549	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1564487445115	Marionette	INFO	Listening on port 50655
+14:50:45.640 INFO [ProtocolHandshake.createSession] - Detected dialect: W3C
+14:50:45.674 INFO [RemoteSession$Factory.lambda$performHandshake$0] - Started new session 438c438e-52b0-4fb6-814c-c1bd6d8da793 (org.openqa.selenium.firefox.GeckoDriverService)
+1564487450588	Marionette	INFO	Stopped listening on port 50655
+[Parent 2132, Gecko_IOThread] WARNING: pipe error: 109: file z:/task_1563383129/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 341
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
