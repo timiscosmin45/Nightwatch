@@ -4,7 +4,7 @@
   "description": "Nightwatch Internship",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch -c conf/nightwatch.conf.js -e firefox  --tag GoogleTests --tag YahooTests",
+    "test": "nightwatch -c conf/nightwatch.conf.js -e firefox  features",
     "eslint": "eslint . --fix --ext .js",
     "generate-report": "node reports/generateReport.js"
   },

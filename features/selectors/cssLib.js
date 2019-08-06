@@ -5,7 +5,7 @@ const cssLib = {
 
   },
   googleElements: {
-    googleSearchForm: () => 'input[name="q'
+    googleSearchForm: () => 'input[name="q"]'
   }
 }
 module.exports = cssLib

@@ -1,194 +1,96 @@
 [
   {
     "keyword": "Feature",
-    "name": "Google Search",
+    "name": "Log in to the Timesheet application",
     "line": 2,
-    "id": "google-search",
-    "tags": [
-      {
-        "name": "@GoogleTests",
-        "line": 1
-      }
-    ],
-    "uri": "features\\google-tests\\google-search.feature",
+    "id": "log-in-to-the-timesheet-application",
+    "tags": [],
+    "uri": "features\\TimesheetLoginTests\\test-login.feature",
     "elements": [
       {
-        "id": "google-search;searching-google",
+        "id": "log-in-to-the-timesheet-application;login-using-valid-credentials",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Searching Google",
-        "tags": [
-          {
-            "name": "@GoogleTests",
-            "line": 1
-          }
-        ],
+        "line": 15,
+        "name": "Login using valid credentials",
+        "tags": [],
         "type": "scenario",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
+            "line": 6,
+            "name": "The user opens the timesheet login page",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8472000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "the username field is visible",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 154000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the password field is visible",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "enters the username:radu.pop and the password:test",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 265000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
             "line": 10,
-            "name": "I open Google's search page",
+            "name": "clicks on the Login button",
             "match": {
-              "location": "features\\step_definitions\\google_steps.js:5"
+              "location": "features\\step_definitions\\login-steps.js:24"
             },
             "result": {
               "status": "passed",
-              "duration": 6156000000
+              "duration": 534000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 12,
-            "name": "the title is \"Google\"",
+            "line": 11,
+            "name": "he should be redirected to the dashboard",
             "match": {
-              "location": "features\\step_definitions\\generic_steps.js:4"
+              "location": "features\\step_definitions\\login-steps.js:28"
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "the Google search form exists",
-            "match": {
-              "location": "features\\step_definitions\\google_steps.js:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 94000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "google-search;searching-google-again",
-        "keyword": "Scenario",
-        "line": 18,
-        "name": "Searching Google again",
-        "tags": [
-          {
-            "name": "@GoogleTests",
-            "line": 1
-          },
-          {
-            "name": "@Research",
-            "line": 16
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 22,
-            "name": "I open Google's search page",
-            "match": {
-              "location": "features\\step_definitions\\google_steps.js:5"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 715000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 24,
-            "name": "the title is \"Google\"",
-            "match": {
-              "location": "features\\step_definitions\\generic_steps.js:4"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 17000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 26,
-            "name": "the Google search form exists",
-            "match": {
-              "location": "features\\step_definitions\\google_steps.js:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 53000000
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "keyword": "Feature",
-    "name": "Yahoo Search",
-    "line": 2,
-    "id": "yahoo-search",
-    "tags": [
-      {
-        "name": "@YahooTests",
-        "line": 1
-      }
-    ],
-    "uri": "features\\yahoo-tests\\yahoo-search.feature",
-    "elements": [
-      {
-        "id": "yahoo-search;searching-yahoo",
-        "keyword": "Scenario",
-        "line": 6,
-        "name": "Searching Yahoo",
-        "tags": [
-          {
-            "name": "@YahooTests",
-            "line": 1
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 10,
-            "name": "I open Yahoo's search page",
-            "match": {
-              "location": "features\\step_definitions\\yahoo_steps.js:5"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2497000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 12,
-            "name": "the title is \"Yahoo\"",
-            "match": {
-              "location": "features\\step_definitions\\generic_steps.js:4"
-            },
-            "result": {
-              "status": "failed",
-              "duration": 16000000,
-              "error_message": "Testing if the page title equals \"Yahoo\". - Expected \"Yahoo\" but got: \"Yahoo face acum parte din Oath\"\n\n    at World.Then (C:\\Users\\valentin.timis\\Desktop\\NighwatchTutorial\\features\\step_definitions\\generic_steps.js:5:24)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "the Yahoo search form exists",
-            "match": {
-              "location": "features\\step_definitions\\yahoo_steps.js:13"
-            },
-            "result": {
-              "status": "skipped"
+              "duration": 287000000
             }
           }
         ]

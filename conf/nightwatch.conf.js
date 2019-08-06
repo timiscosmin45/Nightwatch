@@ -27,6 +27,7 @@ module.exports = {
 
   test_settings: {
     chrome: {
+      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
@@ -35,6 +36,7 @@ module.exports = {
     },
 
     firefox: {
+      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
