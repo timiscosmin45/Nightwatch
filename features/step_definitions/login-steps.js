@@ -1,30 +1,28 @@
 const { client } = require('nightwatch-cucumber')
-const { Then, Given, When, And } = require('cucumber')
- 
-Given(/^The user opens the timesheet login page$/, () => { // parametrii fixi /^
-  return client
-    .init()
-    .waitForElementVisible('body', 1000)
+const { Then, Given, When } = require('cucumber')
+const loginPage = client.page.loginPage()
+
+Given(/^The user opens the timesheet login page$/, () => { // parametrii fixi /^\
+  return loginPage
+    .navigate()
 })
 
 When(/^the username field is visible$/, () => {
-  return client.assert.visible('input[name="username"]')
+  return loginPage.assert.visible.username
 })
 
 Then(/^the password field is visible$/, () => {
-  return client.assert.visible('input[name="password"]')
+  return loginPage.assert.visible.password
 })
 
-Then(/^enters the username:([^"]*) and the password:(.*?)$/, (username, password) => {// ([^"]*) same with (.*?)
-  return client
-    .setValue('input[name="username"]', username)
-    .setValue('input[name="password"]', password)
+Then(/^enters the username:([^"]*) and the password:(.*?)$/, (username, password) => { // ([^"]*) same with (.*?)
+  return loginPage.login(username, password)
 })
 
 Then(/^clicks on the Login button$/, () => {
-  return client.click('button[type=submit]')
+  return loginPage.click.submitButton
 })
 
-Then(/^he should be redirected to the dashboard$/, () => {
-  return client.assert.visible('.ui.header')
+Then(/^he should be logged in$/, () => {
+  return loginPage.assert.visible.logOutButton
 })

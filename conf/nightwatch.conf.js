@@ -13,6 +13,8 @@ module.exports = {
   custom_assertions_path: '',
   live_output: false,
   disable_colors: false,
+  page_objects_path: 'page_objects',
+
   selenium: {
     start_process: true,
     server_path: seleniumServer.path,
@@ -28,6 +30,11 @@ module.exports = {
   test_settings: {
     chrome: {
       launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      screenshots: {
+        enabled: true,
+        on_failure: true,
+        path: 'screenshots/chrome'
+      },
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
@@ -36,7 +43,12 @@ module.exports = {
     },
 
     firefox: {
-      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      // launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      screenshots: {
+        enabled: true,
+        on_failure: true,
+        path: 'screenshots/firexox'
+      },
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
@@ -45,6 +57,12 @@ module.exports = {
 
     },
     firefox_headless: {
+      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      screenshots: {
+        enabled: true,
+        on_failure: true,
+        path: 'screenshots/chrome'
+      },
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
@@ -56,6 +74,12 @@ module.exports = {
     },
 
     chrome_headless: {
+      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      screenshots: {
+        enabled: true,
+        on_failure: true,
+        path: 'screenshots/chrome'
+      },
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,

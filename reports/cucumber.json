@@ -1,96 +1,101 @@
 [
   {
     "keyword": "Feature",
-    "name": "Log in to the Timesheet application",
+    "name": "Login to the Timesheet application",
     "line": 2,
-    "id": "log-in-to-the-timesheet-application",
+    "id": "login-to-the-timesheet-application",
     "tags": [],
     "uri": "features\\TimesheetLoginTests\\test-login.feature",
     "elements": [
       {
-        "id": "log-in-to-the-timesheet-application;login-using-valid-credentials",
+        "id": "login-to-the-timesheet-application;login-using-valid-credentials",
         "keyword": "Scenario",
-        "line": 15,
+        "line": 14,
         "name": "Login using valid credentials",
-        "tags": [],
+        "tags": [
+          {
+            "name": "@LoginHappyFlow",
+            "line": 3
+          }
+        ],
         "type": "scenario",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 6,
+            "line": 5,
             "name": "The user opens the timesheet login page",
             "match": {
-              "location": "features\\step_definitions\\login-steps.js:4"
+              "location": "features\\step_definitions\\login-steps.js:5"
             },
             "result": {
               "status": "passed",
-              "duration": 8472000000
+              "duration": 7030000000
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 7,
+            "keyword": "Then ",
+            "line": 6,
             "name": "the username field is visible",
             "match": {
               "location": "features\\step_definitions\\login-steps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 154000000
+              "duration": 10000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 8,
+            "line": 7,
             "name": "the password field is visible",
             "match": {
               "location": "features\\step_definitions\\login-steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 105000000
+              "duration": 8000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 9,
+            "line": 8,
             "name": "enters the username:radu.pop and the password:test",
             "match": {
               "location": "features\\step_definitions\\login-steps.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 265000000
+              "duration": 447000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "clicks on the Login button",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 10,
-            "name": "clicks on the Login button",
+            "name": "he should be logged in",
             "match": {
-              "location": "features\\step_definitions\\login-steps.js:24"
+              "location": "features\\step_definitions\\login-steps.js:26"
             },
             "result": {
               "status": "passed",
-              "duration": 534000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "he should be redirected to the dashboard",
-            "match": {
-              "location": "features\\step_definitions\\login-steps.js:28"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 287000000
+              "duration": 5000000
             }
           }
         ]
