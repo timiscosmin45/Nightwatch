@@ -1,21 +1,30 @@
 [
   {
     "keyword": "Feature",
-    "name": "Login to the Timesheet application",
+    "name": "User Profile Tests",
     "line": 2,
-    "id": "login-to-the-timesheet-application",
-    "tags": [],
-    "uri": "features\\TimesheetLoginTests\\test-login.feature",
+    "id": "user-profile-tests",
+    "tags": [
+      {
+        "name": "@UserProfile",
+        "line": 1
+      }
+    ],
+    "uri": "features\\UserProfileTests\\test-userProfile.feature",
     "elements": [
       {
-        "id": "login-to-the-timesheet-application;login-using-valid-credentials",
+        "id": "user-profile-tests;add-children---happy-flow",
         "keyword": "Scenario",
-        "line": 14,
-        "name": "Login using valid credentials",
+        "line": 64,
+        "name": "Add children - Happy Flow",
         "tags": [
           {
-            "name": "@LoginHappyFlow",
-            "line": 3
+            "name": "@UserProfile",
+            "line": 1
+          },
+          {
+            "name": "@CreateChildren-HappyFlow",
+            "line": 46
           }
         ],
         "type": "scenario",
@@ -24,61 +33,48 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 5,
-            "name": "The user opens the timesheet login page",
+            "name": "the user opens the timesheet login page",
             "match": {
-              "location": "features\\step_definitions\\login-steps.js:5"
+              "location": "features\\step_definitions\\login-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 7030000000
+              "duration": 6996000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 6,
-            "name": "the username field is visible",
+            "name": "the title is:\"Timesheet\"",
             "match": {
-              "location": "features\\step_definitions\\login-steps.js:10"
+              "location": "features\\step_definitions\\generic-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 30000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "the username field is visible",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 7,
+            "line": 8,
             "name": "the password field is visible",
             "match": {
-              "location": "features\\step_definitions\\login-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 8,
-            "name": "enters the username:radu.pop and the password:test",
-            "match": {
-              "location": "features\\step_definitions\\login-steps.js:18"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 447000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 9,
-            "name": "clicks on the Login button",
-            "match": {
-              "location": "features\\step_definitions\\login-steps.js:22"
+              "location": "features\\step_definitions\\login-steps.js:15"
             },
             "result": {
               "status": "passed",
@@ -88,14 +84,207 @@
           {
             "arguments": [],
             "keyword": "Then ",
+            "line": 9,
+            "name": "enters the username:\"radu.pop\" and the password:\"test\"",
+            "match": {
+              "location": "features\\step_definitions\\login-steps.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 269000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
             "line": 10,
-            "name": "he should be logged in",
+            "name": "clicks on the Login button",
             "match": {
               "location": "features\\step_definitions\\login-steps.js:26"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 401000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "sets the language to english",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 48,
+            "name": "the user is logged in",
+            "match": {
+              "location": "features\\step_definitions\\generic-steps.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 740000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "he clicks on the user icon",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "he is redirected to User Profile page",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "clicks on the \"Add\" button from Children's section",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:76"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "a dialog box should open",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 649000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "the input fields are shown",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:84"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 452000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "he inserts valid data into the input fields: \"Raducu\",\"Pop\",\"18.08.2018\"",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 342000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "opens the gender selector",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:98"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 56,
+            "name": "genders are visible",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:102"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 417000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "he chooses: \"Male\" gender",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 264000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 58,
+            "name": "click on the \"Add\" button",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the following message should pop up:\"Child create\"",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1720000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "the childe should appear in Children's section with the folowing data:\"Raducu\",\"Pop\",\"18.08.2018\",\"Male\"",
+            "match": {
+              "location": "features\\step_definitions\\userProfile-steps.js:123"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 267000000
             }
           }
         ]
