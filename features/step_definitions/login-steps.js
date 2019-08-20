@@ -1,28 +1,37 @@
 const { client } = require('nightwatch-cucumber')
 const { Then, Given, When } = require('cucumber')
 const loginPage = client.page.loginPage()
+const generics = client.page.genericFunctions()
+const cssLib = require('../selectors/cssLib')
 
-Given(/^The user opens the timesheet login page$/, () => { // parametrii fixi /^\
-  return loginPage
-    .navigate()
+Given(/^the user opens the timesheet login page$/, () => { // parametrii fixi /^\
+  return loginPage.navigate().api.waitForElementVisible(cssLib.body(), 5000, false)
 })
 
 When(/^the username field is visible$/, () => {
-  return loginPage.assert.visible.username
+  return client.assert.visible(cssLib.loginPage.usernameInputField())
 })
 
 Then(/^the password field is visible$/, () => {
-  return loginPage.assert.visible.password
+  loginPage.assert.visible(cssLib.loginPage.passwordInputField())
 })
 
-Then(/^enters the username:([^"]*) and the password:(.*?)$/, (username, password) => { // ([^"]*) same with (.*?)
-  return loginPage.login(username, password)
+Then(/^enters the username:"([^"]*)" and the password:"(.*?)"$/, (username, password) => { // ([^"]*) same with (.*?)
+  if (username === 'blank') loginPage.fillLoginCredentials(' ', password)
+  else if (password === 'blank') loginPage.fillLoginCredentials(username, ' ')
+  else if (username === 'blank' && password === 'blank') loginPage.fillLoginCredentials(username, password)
+  else return loginPage.fillLoginCredentials(username, password)
 })
 
 Then(/^clicks on the Login button$/, () => {
-  return loginPage.click.submitButton
+  return client.click(cssLib.loginPage.loginBtn())
 })
 
-Then(/^he should be logged in$/, () => {
-  return loginPage.assert.visible.logOutButton
+Then(/^the user should be logged in$/, () => {
+  return client.waitForElementVisible(cssLib.loginPage.logoutBtn(), 2000, false)
+    .end()
+})
+
+Then(/^the error message:"(.*?)" should appear$/, (message) => {
+  return generics.checkErrorMessage(cssLib.loginPage.errorMessage(), message)
 })
