@@ -1,4 +1,4 @@
-# This epository contains my internship testing project based on the Nightwatch-Cucumber automation framework.
+# This epository contains my QA automation internship testing project based on the Nightwatch-Cucumber framework.
 # On this project I have tested the internal Timesheet of the company.  
 # Test coverage is: 
   # -login system, where I have tested end to end user behaviour through happy and negative flows
