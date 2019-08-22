@@ -16,7 +16,7 @@ Then(/^the password field is visible$/, () => {
   loginPage.assert.visible(cssLib.loginPage.passwordInputField())
 })
 
-Then(/^enters the username:"([^"]*)" and the password:"(.*?)"$/, (username, password) => { // ([^"]*) same with (.*?)
+Then(/^the user enters the username: (.*?) and the password: (.*?)$/, (username, password) => { // ([^"]*) same with (.*?)
   if (username === 'blank') loginPage.fillLoginCredentials(' ', password)
   else if (password === 'blank') loginPage.fillLoginCredentials(username, ' ')
   else if (username === 'blank' && password === 'blank') loginPage.fillLoginCredentials(username, password)
@@ -27,11 +27,11 @@ Then(/^clicks on the Login button$/, () => {
   return client.click(cssLib.loginPage.loginBtn())
 })
 
-Then(/^the user should be logged in$/, () => {
+Then(/^the user should be logged-in$/, () => {
   return client.waitForElementVisible(cssLib.loginPage.logoutBtn(), 2000, false)
     .end()
 })
 
-Then(/^the error message:"(.*?)" should appear$/, (message) => {
+Then(/^the following error message: (.*?) should appear$/, (message) => {
   return generics.checkErrorMessage(cssLib.loginPage.errorMessage(), message)
 })

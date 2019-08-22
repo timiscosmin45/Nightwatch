@@ -1,4 +1,3 @@
-
 const cssLib = require('../selectors/cssLib')
 
 module.exports = {
@@ -19,7 +18,6 @@ module.exports = {
           .assert.containsText(selector, message)
           .click(cssLib.loginPage.errorMessageCloseIcon())
       }
-
     }
   ]
 

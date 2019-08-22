@@ -10,11 +10,11 @@ Then(/^sets the language to english$/, () => {
   generics.languageToggle(cssLib.topNav.languages.english())
 })
 
-Then(/^he clicks on the user icon$/, () => {
+Then(/^clicks on the user icon$/, () => {
   return client.click(cssLib.leftNav.userIcon())
 })
 
-Then(/^he is redirected to User Profile page$/, () => {
+Then(/^the user is redirected to User's Profile page$/, () => {
   return client.waitForElementVisible(cssLib.userProfile.validator(), 5000)
 })
 
@@ -22,7 +22,7 @@ Then(/^clicks on the edit button$/, () => {
   return client.click(cssLib.userProfile.personalDataSection.editBtn())
 })
 
-Then(/^the input fields are visible$/, async () => {
+Then(/^the the input fields are visible$/, async () => {
   await client.elements('css selector', cssLib.userProfile.personalDataSection.formInputFields(), result => {
     result.value.forEach(element => {
       client.elementIdDisplayed(element.ELEMENT, output => {
@@ -32,20 +32,20 @@ Then(/^the input fields are visible$/, async () => {
   })
 })
 
-Then(/^he inserts personal valid data into the input fields:"(.*?)","(.*?)","(.*?)","(.*?)","(.*?)"$/, (email, skype, workPhone, personalPhone, carNumber) => {
+Then(/^the user enters the email: (.*?), skype: (.*?), company phone: (.*?), personal phone: (.*?), car number: (.*?)$/, (email, skype, workPhone, personalPhone, carNumber) => {
   userProfile.personalDataFormCleaner()
   return userProfile.personalDataFormFiller(email, skype, workPhone, personalPhone, carNumber)
 })
 
-Then(/^click on the save button$/, () => {
+Then(/^clicks on the save button$/, () => {
   return client.click(cssLib.userProfile.personalDataSection.saveBtn())
 })
 
-Then(/^the following message should pop up:"(.*?)"$/, (message) => {
+Then(/^the following message should pop up: (.*?)$/, (message) => {
   return generics.checkErrorMessage(cssLib.loginPage.errorMessage(), message)
 })
 
-Then(/^profile should be updated, besides email adress with the folowing data:"(.*?)","(.*?)","(.*?)","(.*?)","(.*?)"$/, async (email, skype, workPhone, personalPhone, carNumber) => {
+Then(/^profile is updated as it follows, email: (.*?), skype: (.*?), company phone: (.*?), personal phone: (.*?), car number: (.*?)$/, async (email, skype, workPhone, personalPhone, carNumber) => {
   const list = []
   await client.elements('css selector', cssLib.userProfile.personalDataSection.displayerPData(), result => {
     result.value.forEach(element => {
@@ -56,9 +56,10 @@ Then(/^profile should be updated, besides email adress with the folowing data:"(
   })
   expect(list).to.not.include.members([email])
   expect(list).to.include.members([skype, workPhone, personalPhone, carNumber])
+  return client.end()
 })
 
-Then(/^profile should not be updated with the folowing data:"(.*?)","(.*?)","(.*?)","(.*?)","(.*?)"$/, async (email, skype, workPhone, personalPhone, carNumber) => {
+Then(/^profile should not be updated as it follows, email: (.*?), skype: (.*?), company phone: (.*?), personal phone: (.*?), car number: (.*?)$/, async (email, skype, workPhone, personalPhone, carNumber) => {
   const list = [] // extracted data from function below
   const array = [email, skype, workPhone, personalPhone, carNumber]
   await client.elements('css selector', cssLib.userProfile.personalDataSection.displayerPData(), result => {
@@ -68,13 +69,15 @@ Then(/^profile should not be updated with the folowing data:"(.*?)","(.*?)","(.*
       })
     })
   })
-  array.forEach(element => {
+  array.forEach((element) => {
     assert.notInclude(list, element)
+    return client.end()
   })
+  return client.end()
 })
 
 Then(/^clicks on the "Add" button from Children's section$/, () => {
-  client.click(cssLib.userProfile.childrenSection.addBtn())
+  return client.click(cssLib.userProfile.childrenSection.addBtn())
 })
 
 Then(/^a dialog box should open$/, () => {
@@ -91,7 +94,7 @@ When(/^the input fields are shown$/, () => {
   })
 })
 
-Then(/^he inserts valid data into the input fields: "(.*?)","(.*?)","(.*?)"$/, (firstname, lastname, birthdate) => {
+Then(/^the user enters the first name: (.*?), last name: (.*?), birthdate: (.*?)$/, (firstname, lastname, birthdate) => {
   return userProfile.childrenFormFiller(firstname, lastname, birthdate)
 })
 
@@ -104,7 +107,7 @@ When(/^genders are visible$/, () => {
     .assert.visible(cssLib.userProfile.childrenSection.genderFemale())
 })
 
-Then(/^he chooses: "(.*?)" gender$/, (gender) => {
+Then(/^the user selects the following gender: (.*?)$/, (gender) => {
   if (gender === 'Male') {
     return client.click(cssLib.userProfile.childrenSection.genderMale())
   } else {
@@ -112,15 +115,11 @@ Then(/^he chooses: "(.*?)" gender$/, (gender) => {
   }
 })
 
-Then(/^click on the "Add" button$/, () => {
-  client.click(cssLib.userProfile.childrenSection.submitBtn())
+Then(/^clicks on the Add button$/, () => {
+  return client.click(cssLib.userProfile.childrenSection.submitBtn())
 })
 
-Then(/^he following message should pop up:"(.*?)"$/, (message) => {
-  generics.checkErrorMessage(cssLib.userProfile.checkErrorMessage(), message)
-})
-
-Then(/^the childe should appear in Children's section with the folowing data:"(.*?)","(.*?)","(.*?)","(.*?)"$/, async (firstname, lastname, birthdate, gender) => {
+Then(/^the childe with the following data, firstname: (.*?), lastname: (.*?), birthdate: (.*?), gender: (.*?) is displayed$/, async (firstname, lastname, birthdate, gender) => {
   const list = []// extracted data from function below
   const age = userProfile.ageCalculator(birthdate)
   const ageString = age.toString()
@@ -132,5 +131,23 @@ Then(/^the childe should appear in Children's section with the folowing data:"(.
     })
   })
   expect(list).to.include.members([firstname, lastname, ageString])
+  return client.end()
 })
 
+Then(/^the childe with the following data, firstname: (.*?), lastname: (.*?), birthdate: (.*?), gender: (.*?) should not be displayed$/, async (firstname, lastname, birthdate, gender) => {
+  const list = []// extracted data from function below
+  const age = userProfile.ageCalculator(birthdate)
+  const ageString = age.toString()
+  const array = [firstname, lastname, ageString]
+  await client.elements('css selector', cssLib.userProfile.childrenSection.childrenSectionContent(), (result) => {
+    result.value.forEach(element => {
+      client.elementIdText(element.ELEMENT, (output) => {
+        list.push(output.value)
+      })
+    })
+  })
+  array.forEach(element => {
+    assert.notInclude(list, element)
+    return client.end()
+  })
+})

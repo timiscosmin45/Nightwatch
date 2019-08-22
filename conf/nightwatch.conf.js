@@ -4,8 +4,13 @@ const geckodriver = require('geckodriver')
 
 require('nightwatch-cucumber')({
 
-  cucumberArgs: ['--require', 'features/step_definitions', '--format', 'json:reports/cucumber.json', '--format', 'node_modules/cucumber-pretty', 'features']
-
+  cucumberArgs: [
+    '--require', 'features/hooks/hooks.js',
+    '--require', 'features/step_definitions',
+    '--format', 'json:reports/cucumber.json',
+    '--format', 'node_modules/cucumber-pretty',
+    'features'
+  ]
 })
 
 module.exports = {
@@ -13,7 +18,7 @@ module.exports = {
   custom_assertions_path: '',
   live_output: false,
   disable_colors: false,
-  page_objects_path: 'page_objects',
+  page_objects_path: 'features/page_objects',
 
   selenium: {
     start_process: true,
@@ -43,7 +48,7 @@ module.exports = {
     },
 
     firefox: {
-      // launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
       screenshots: {
         enabled: true,
         on_failure: true,
