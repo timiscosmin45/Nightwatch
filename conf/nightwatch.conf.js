@@ -66,7 +66,7 @@ module.exports = {
       screenshots: {
         enabled: true,
         on_failure: true,
-        path: 'screenshots/chrome'
+        path: 'screenshots/firefox'
       },
       desiredCapabilities: {
         browserName: 'firefox',

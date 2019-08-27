@@ -15,7 +15,7 @@ Then(/^clicks on the user icon$/, () => {
 })
 
 Then(/^the user is redirected to User's Profile page$/, () => {
-  return client.waitForElementVisible(cssLib.userProfile.validator(), 5000)
+  return client.waitForElementVisible(cssLib.userProfile.userImg(), 5000, false)
 })
 
 Then(/^clicks on the edit button$/, () => {
@@ -60,18 +60,13 @@ Then(/^profile is updated as it follows, email: (.*?), skype: (.*?), company pho
 })
 
 Then(/^profile should not be updated as it follows, email: (.*?), skype: (.*?), company phone: (.*?), personal phone: (.*?), car number: (.*?)$/, async (email, skype, workPhone, personalPhone, carNumber) => {
-  const list = [] // extracted data from function below
   const array = [email, skype, workPhone, personalPhone, carNumber]
   await client.elements('css selector', cssLib.userProfile.personalDataSection.displayerPData(), result => {
     result.value.forEach(element => {
       client.elementIdText(element.ELEMENT, output => {
-        list.push(output.value)
+        expect(array).to.not.include.members([output.value])
       })
     })
-  })
-  array.forEach((element) => {
-    assert.notInclude(list, element)
-    return client.end()
   })
   return client.end()
 })
@@ -135,19 +130,15 @@ Then(/^the childe with the following data, firstname: (.*?), lastname: (.*?), bi
 })
 
 Then(/^the childe with the following data, firstname: (.*?), lastname: (.*?), birthdate: (.*?), gender: (.*?) should not be displayed$/, async (firstname, lastname, birthdate, gender) => {
-  const list = []// extracted data from function below
   const age = userProfile.ageCalculator(birthdate)
   const ageString = age.toString()
   const array = [firstname, lastname, ageString]
   await client.elements('css selector', cssLib.userProfile.childrenSection.childrenSectionContent(), (result) => {
     result.value.forEach(element => {
       client.elementIdText(element.ELEMENT, (output) => {
-        list.push(output.value)
+        expect(array).to.not.include.members([output.value])
       })
     })
   })
-  array.forEach(element => {
-    assert.notInclude(list, element)
-    return client.end()
-  })
+  return client.end()
 })

@@ -1,8 +1,8 @@
 
 @CreateChildren
-Feature: Create Children Tests
+Feature: Create Children-Tests
 
-@CreateChildren-HappyFlow
+  @CreateChildren-HappyFlow
   Scenario Outline: Add children-Happy Flow
     Given the user is logged-in
     Then clicks on the user icon
@@ -16,13 +16,13 @@ Feature: Create Children Tests
     Then the user selects the following gender: <gender>
     Then clicks on the Add button
     Then the following message should pop up: <message>
-    Then the childe with the following data, firstname: <firstname>, lastname: <lastname>, birthdate: <birthdate>, gender: <gender> is displayed 
+    Then the childe with the following data, firstname: <firstname>, lastname: <lastname>, birthdate: <birthdate>, gender: <gender> is displayed
 
     Examples:
-      | firstname | lastname | gender | birthdate  |    message   |
-      |  Raducu   |   Pop    | Male   | 18.08.2018 | Child create |
-      
- @CreateChildren-NegativeFlow
+      | firstname | lastname | gender | birthdate  | message      |
+      | Raducu    | Pop      | Male   | 18.08.2018 | Child create |
+
+  @CreateChildren-NegativeFlow
   Scenario Outline: Add children - NegativeFlow
     Given the user is logged-in
     Then clicks on the user icon
@@ -36,8 +36,9 @@ Feature: Create Children Tests
     Then the user selects the following gender: <gender>
     Then clicks on the Add button
     #Then the following error message shoul pop up: <message>
-    Then the childe with the following data, firstname: <firstname>, lastname: <lastname>, birthdate: <birthdate>, gender: <gender> should not be displayed 
+    Then the childe with the following data, firstname: <firstname>, lastname: <lastname>, birthdate: <birthdate>, gender: <gender> should not be displayed
+ 
 
     Examples:
-      | firstname  | lastname   | gender | birthdate  |        message         |
-      | a!:_.3432a | 4343#E><:+ |  Male  | 24.08.2060 | Specific error message |
+      | firstname  | lastname   | gender | birthdate  | message                |
+      | a!:_.3432a | 4343#E><:+ | Male   | 24.08.2060 | Specific error message |

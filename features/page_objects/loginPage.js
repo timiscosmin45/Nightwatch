@@ -6,19 +6,22 @@ module.exports = {
   commands: [
     {
       fillLoginCredentials: function (username, password) {
-        this.setValue(cssLib.loginPage.usernameInputField(), username)
-        return this.setValue(cssLib.loginPage.passwordInputField(), password)
+        return this
+          .setValue(cssLib.loginPage.usernameInputField(), username)
+          .setValue(cssLib.loginPage.passwordInputField(), password)
       },
       loginFunction: function (languageSelector) {
         return this
           .navigate()
           .waitForElementVisible(cssLib.body(), 5000, false)
+          .waitForElementVisible(cssLib.loginPage.usernameInputField(), 5000, false)
+          .waitForElementVisible(cssLib.loginPage.passwordInputField(), 5000, false)
           .fillLoginCredentials('radu.pop', 'test')
           .click(cssLib.loginPage.loginBtn())
+          .waitForElementVisible(cssLib.topNav.languages.selector(), 5000, false)
           .click(cssLib.topNav.languages.selector())
           .click(languageSelector)
       }
-
     }
   ]
 

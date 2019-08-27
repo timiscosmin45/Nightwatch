@@ -8,7 +8,7 @@ const options = {
   reportSuiteAsScenarios: true,
   launchReport: false,
   ignoreBadJsonFile: true,
-  storeScreenShots: false,
+  storeScreenShots: true,
   brandTitle: 'Nightwatch',
   metadata: {
     'App Version': '0.9.0',

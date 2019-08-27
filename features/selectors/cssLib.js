@@ -12,7 +12,7 @@ module.exports = {
   },
   topNav: {
     languages: {
-      selector: () => 'div.CH3x3:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)',
+      selector: () => 'div.CH3x3:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > i',
       romanian: () => '.ro.flag',
       english: () => '.us.flag'
     }
@@ -24,13 +24,29 @@ module.exports = {
       timesheet: {
         validator: () => '.header',
         timesheetSelector: () => '.calendar.alternate.icon.A7YMy',
-        month_yearDisplayer: () => '.col-md-5._1VlBl'
+        month_yearDisplayer: () => '.col-md-5._1VlBl',
+        dayTime: () => '._1A__5 span',
+        dialogBox: () => '.page',
+        logWork: () => '.clock.outline.icon',
+        absenceRequest: () => '.calendar.times.outline.icon',
+        formInputFields: () => '.bottom > form:nth-child(1) input, textarea',
+        startDate: () => 'div._3WAcV:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input',
+        endDate: () => 'div._3WAcV:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)',
+        startTime: () => 'div._3WAcV:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input',
+        timeSpent: () => 'div._3WAcV:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input',
+        project: () => 'div._3WAcV:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input',
+        module: () => 'div._3WAcV:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input',
+        task: () => 'div._3WAcV:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input',
+        description: () => 'div._3WAcV:nth-child(6) > div:nth-child(1) > div:nth-child(2) > textarea',
+        saveBtn: () => '.form-button',
+        timeIcon: () => '.grey.clock.outline.small.icon',
+        clock: () => 'span'
       }
     }
   },
   userProfile: {
     // specific page element used to validate the user persence 
-    validator: () => '.ui.header',
+    userImg: () => '.ui.circular.image._1O5o7',
     personalDataSection: {
       formInputFields: () => '.form.ui:nth-child(3) input',
       emailField: () => 'input[name="emailAddress"]',

@@ -17,6 +17,13 @@ module.exports = {
           .api.pause(1000)
           .assert.containsText(selector, message)
           .click(cssLib.loginPage.errorMessageCloseIcon())
+      },
+      formInputCleaner: async function (selector) {
+        await this.api.elements('css selector', selector, result => {
+          result.value.forEach(element => {
+            this.api.elementIdClear(element.ELEMENT)
+          })
+        })
       }
     }
   ]

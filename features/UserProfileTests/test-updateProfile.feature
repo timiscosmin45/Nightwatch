@@ -1,6 +1,7 @@
 @UpdatePersonalData
-Feature: Update Personal Data Tests
+Feature: Update Personal Data-Tests
   
+
 @UpdatePersonalData-HappyFlow
   Scenario Outline: Update personal data-Happy Flow
     Given the user is logged-in
@@ -11,7 +12,7 @@ Feature: Update Personal Data Tests
     Then the user enters the email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
     Then clicks on the save button
     Then the following message should pop up: <message>
-    Then profile is updated as it folows, email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
+    Then profile is updated as it follows, email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
 
     Examples:
       |        email       |      skype      | workPhone  | personalPhone | carNumber |               message                 |
@@ -27,8 +28,8 @@ Feature: Update Personal Data Tests
     Then the user enters the email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
     Then clicks on the save button
     #Then the following message should pop up:"<message>"
-    Then profile should not be updated as it folows, email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
-
+    Then profile should not be updated as it follows, email: <email>, skype: <skype>, company phone: <workPhone>, personal phone: <personalPhone>, car number: <carNumber> 
+    
     Examples:
       |        email          |       skype     | workPhone | personalPhone |  carNumber  |        message         |
       | testMail@!.ro.!!@:#][ | aaaaaaaa#!#$#$D | r3rfr4f@$ |  654trf43@%   | 111!@$E$##@ | Speficic error message |
