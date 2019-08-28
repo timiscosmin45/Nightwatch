@@ -46,31 +46,29 @@ module.exports = {
             result.value.forEach(element => {
               this.api.elementIdText(element.ELEMENT, output => {
                 if (output.value === time.hour) {
-                  this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
-                    this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.clock(), result => {
-                      result.value.forEach(element => {
-                        this.api.elementIdText(element.ELEMENT, output => {
-                          if (output.value === time.minute) {
-                            this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
-                              this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.timeOfTheDay(), result => {
-                                result.value.forEach(element => {
-                                  this.api.elementIdText(element.ELEMENT, output => {
-                                    if (output.value === time.timeOfTheDay) {
-                                      this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
-                                        this.click(cssLib.leftNav.subsections.timesheet.okBtn()).api.pause(1000)
-                                      })
-                                    }
-                                  })
-                                })
-                              })
-                            })
-                          }
-                        })
-                      })
-                    })
-                  })
+                  this.api.moveTo(element.ELEMENT).mouseButtonClick('left')
                 }
               })
+            })
+          })
+        })
+        await this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.clock(), result => {
+          result.value.forEach(element => {
+            this.api.elementIdText(element.ELEMENT, output => {
+              if (output.value === time.minute) {
+                this.api.moveTo(element.ELEMENT).mouseButtonClick('left')
+              }
+            })
+          })
+        })
+        await this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.timeOfTheDay(), result => {
+          result.value.forEach(element => {
+            this.api.elementIdText(element.ELEMENT, output => {
+              if (output.value === time.timeOfTheDay) {
+                this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
+                  this.click(cssLib.leftNav.subsections.timesheet.okBtn()).api.pause(1000)
+                })
+              }
             })
           })
         })
