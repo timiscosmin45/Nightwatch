@@ -33,4 +33,10 @@ Then(/^the user click on the `Work log` button from the top of the content box$/
 })
 
 Then(/^inserts the folowing data into the input fields, Start Date: (.*?), End date: (.*?), Start Time: (.*?), Time Spent: (.*?), Project: (.*?), Module: (.*?), Task: (.*?), Description: (.*?)$/, async (startDate, endDate, startTime, timeSpent, project, _module, task, description) => {
+  generics.formInputCleaner(cssLib.leftNav.subsections.timesheet.formInputFields())
+  timesheet.formInputFiller(startDate, endDate, timeSpent, project, _module, task, description)
+  return timesheet.timePicker(startTime)
+})
+Then(/^clicks on the Save button$/, () => {
+  return client.click(cssLib.leftNav.subsections.timesheet.saveBtn()).end()
 })

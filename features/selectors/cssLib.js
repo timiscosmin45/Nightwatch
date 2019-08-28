@@ -40,7 +40,9 @@ module.exports = {
         description: () => 'div._3WAcV:nth-child(6) > div:nth-child(1) > div:nth-child(2) > textarea',
         saveBtn: () => '.form-button',
         timeIcon: () => '.grey.clock.outline.small.icon',
-        clock: () => 'span'
+        clock: () => 'span[style*="transform"]',
+        timeOfTheDay: () => 'h3',
+        okBtn: () => 'button.MuiButtonBase0128:nth-child(3) > span'
       }
     }
   },

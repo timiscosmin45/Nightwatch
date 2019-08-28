@@ -24,37 +24,64 @@ module.exports = {
         const myDate = day + '.' + month + '.' + date.getFullYear().toString()
         return myDate
       },
+
       timeSlicer: function (startTime) {
         const time = {
-          hour: () => startTime.slice(0, 2),
-          minute: () => startTime.slice(3, 5),
-          timeOfTheDay: () => startTime.slice(5, 8)
+          firstElement: startTime.slice(0, 1).trim(),
+          hour: null,
+          minute: startTime.slice(3, 5).trim(),
+          timeOfTheDay: startTime.slice(5, 8).trim()
+        }
+        if (time.firstElement === '0') {
+          time.hour = startTime.slice(1, 2)
+        } else {
+          time.hour = startTime.slice(0, 2)
         }
         return time
       },
-      timePicker: function (startTime) {
+      timePicker: async function (startTime) {
         const time = this.timeSlicer(startTime)
-        this.click(cssLib.leftNav.subsections.timesheet.timeIcon()).api.pause(1000)
-        this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.clock(), result => {
-          result.value.forEach(element => {
-            this.elementIdText(element.ELEMENT, result => {
-              console.log(result.value)
-              console.log(time.hour())
-              if (result.value === time.hour()) {
-                //this.api.elementIdClick(element.ELEMENT).api.pause(5000)
-                console.log(result.value)
-                console.log(result.value + '--' + time.hour())
-              }
+        await this.click(cssLib.leftNav.subsections.timesheet.timeIcon(), () => {
+          this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.clock(), result => {
+            result.value.forEach(element => {
+              this.api.elementIdText(element.ELEMENT, output => {
+                if (output.value === time.hour) {
+                  this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
+                    this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.clock(), result => {
+                      result.value.forEach(element => {
+                        this.api.elementIdText(element.ELEMENT, output => {
+                          if (output.value === time.minute) {
+                            this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
+                              this.api.elements('css selector', cssLib.leftNav.subsections.timesheet.timeOfTheDay(), result => {
+                                result.value.forEach(element => {
+                                  this.api.elementIdText(element.ELEMENT, output => {
+                                    if (output.value === time.timeOfTheDay) {
+                                      this.api.moveTo(element.ELEMENT).mouseButtonClick('left', () => {
+                                        this.click(cssLib.leftNav.subsections.timesheet.okBtn()).api.pause(1000)
+                                      })
+                                    }
+                                  })
+                                })
+                              })
+                            })
+                          }
+                        })
+                      })
+                    })
+                  })
+                }
+              })
             })
           })
         })
       },
+      formInputFiller: function (startDate, endDate, timeSpent, project, _module, task, description) {
+        const currentDate = this.currentDate()
+        startDate = endDate = currentDate
 
-      formInputFiller: function (startDate, endDate, startTime, timeSpent, project, _module, task, description) {
         this.api.pause(500)
         this.setValue(cssLib.leftNav.subsections.timesheet.startDate(), startDate).api.pause(500)
         this.setValue(cssLib.leftNav.subsections.timesheet.endDate(), endDate).api.pause(500)
-        this.setValue(cssLib.leftNav.subsections.timesheet.startTime(), startTime).api.pause(5000)
         this.setValue(cssLib.leftNav.subsections.timesheet.timeSpent(), timeSpent).api.pause(500)
         this.setValue(cssLib.leftNav.subsections.timesheet.project(), project).api.pause(500)
         this.setValue(cssLib.leftNav.subsections.timesheet.module(), _module).api.pause(500)
