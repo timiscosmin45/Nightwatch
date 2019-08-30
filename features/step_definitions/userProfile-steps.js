@@ -41,10 +41,6 @@ Then(/^clicks on the save button$/, () => {
   return client.click(cssLib.userProfile.personalDataSection.saveBtn())
 })
 
-Then(/^the following message should pop up: (.*?)$/, (message) => {
-  return generics.checkErrorMessage(cssLib.loginPage.errorMessage(), message)
-})
-
 Then(/^profile is updated as it follows, email: (.*?), skype: (.*?), company phone: (.*?), personal phone: (.*?), car number: (.*?)$/, async (email, skype, workPhone, personalPhone, carNumber) => {
   const list = []
   await client.elements('css selector', cssLib.userProfile.personalDataSection.displayerPData(), result => {

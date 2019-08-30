@@ -21,6 +21,11 @@ module.exports = {
           .waitForElementVisible(cssLib.topNav.languages.selector(), 5000, false)
           .click(cssLib.topNav.languages.selector())
           .click(languageSelector)
+      },
+      logOutFunction: function () {
+        return this
+          .waitForElementVisible(cssLib.loginPage.logoutBtn(), 5000)
+          .click(cssLib.loginPage.logoutBtn())
       }
     }
   ]
