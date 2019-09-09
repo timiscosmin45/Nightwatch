@@ -47,7 +47,7 @@ module.exports = {
     }
   },
   userProfile: {
-    // specific page element used to validate the user persence 
+    // specific page element used to validate the user persence
     userImg: () => '.ui.circular.image._1O5o7',
     personalDataSection: {
       formInputFields: () => '.form.ui:nth-child(3) input',

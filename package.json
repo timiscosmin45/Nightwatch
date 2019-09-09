@@ -4,7 +4,8 @@
   "description": "Nightwatch Internship",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch -c conf/nightwatch.conf.js -e firefox features",
+    "test": "nightwatch -c conf/nightwatch.conf.js -e chrome",
+    "bStack":"nightwatch -c conf/browserstack.conf.js -e browserstack",
     "eslint": "eslint . --fix --ext .js",
     "generate-report": "node reports/generateReport.js"
   },
@@ -14,11 +15,13 @@
   "author": "Valentin Timis",
   "license": "ISC",
   "devDependencies": {
+    "browserstack-local": "^1.4.2",
     "chai": "^4.2.0",
     "chromedriver": "^75.1.0",
     "cucumber": "^4.2.1",
     "cucumber-html-reporter": "^5.0.0",
     "cucumber-pretty": "^1.5.2",
+    "dotenv": "^8.1.0",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-import": "^2.18.2",

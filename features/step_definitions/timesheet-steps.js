@@ -36,11 +36,8 @@ Then(/^inserts the folowing data into the input fields, Start Date: (.*?), End d
   generics.formInputCleaner(cssLib.leftNav.subsections.timesheet.formInputFields())
   timesheet.formInputFiller(startDate, endDate, timeSpent, project, _module, task, description)
   return timesheet.timePicker(startTime)
-
 })
 
 Then(/^clicks on the Save button$/, async () => {
   return client.click(cssLib.leftNav.subsections.timesheet.saveBtn())
-  
 })
-

@@ -2,6 +2,8 @@ const seleniumServer = require('selenium-server')
 const chromedriver = require('chromedriver')
 const geckodriver = require('geckodriver')
 
+require('dotenv').config()
+
 require('nightwatch-cucumber')({
 
   cucumberArgs: [
@@ -14,6 +16,7 @@ require('nightwatch-cucumber')({
 })
 
 module.exports = {
+
   output_folder: 'reports',
   custom_assertions_path: '',
   live_output: false,
@@ -31,7 +34,6 @@ module.exports = {
       'webdriver.gecko.driver': geckodriver.path
     }
   },
-
   test_settings: {
     chrome: {
       launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
@@ -59,8 +61,8 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true
       }
-
     },
+
     firefox_headless: {
       launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
       screenshots: {
@@ -94,7 +96,6 @@ module.exports = {
         }
       }
     }
-
   }
-
 }
+
