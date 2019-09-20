@@ -2,13 +2,11 @@ const seleniumServer = require('selenium-server')
 const chromedriver = require('chromedriver')
 const geckodriver = require('geckodriver')
 
-require('dotenv').config()
-
 require('nightwatch-cucumber')({
 
   cucumberArgs: [
     '--require', 'features/hooks/hooks.js',
-    '--require', 'features/step_definitions',
+    '--require', 'step_definitions',
     '--format', 'json:reports/cucumber.json',
     '--format', 'node_modules/cucumber-pretty',
     'features'
@@ -16,12 +14,16 @@ require('nightwatch-cucumber')({
 })
 
 module.exports = {
-
+  test_workers: {
+    enabled: true,
+    workers: 'auto'
+  },
+  detailed_output: true,
   output_folder: 'reports',
   custom_assertions_path: '',
   live_output: false,
   disable_colors: false,
-  page_objects_path: 'features/page_objects',
+  page_objects_path: './page_objects',
 
   selenium: {
     start_process: true,
@@ -98,4 +100,3 @@ module.exports = {
     }
   }
 }
-

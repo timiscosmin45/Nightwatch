@@ -13,18 +13,18 @@ module.exports = {
       },
       checkErrorMessage: function (selector, message) {
         return this
-          .waitForElementVisible(selector, 2000)
+          .waitForElementVisible(selector, 5000)
           .api.pause(1000)
           .assert.containsText(selector, message)
           .click(cssLib.loginPage.errorMessageCloseIcon())
-      },
-      formInputCleaner: async function (selector) {
-        await this.api.elements('css selector', selector, result => {
-          result.value.forEach(element => {
-            this.api.elementIdClear(element.ELEMENT)
-          })
+    },
+    formInputCleaner: async function (selector) {
+      await this.api.elements('css selector', selector, result => {
+        result.value.forEach(element => {
+          this.api.elementIdClear(element.ELEMENT)
         })
-      }
+      })
+    }
     }
   ]
 

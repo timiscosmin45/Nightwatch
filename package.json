@@ -4,8 +4,8 @@
   "description": "Nightwatch Internship",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch -c conf/nightwatch.conf.js -e chrome",
-    "bStack":"nightwatch -c conf/browserstack.conf.js -e browserstack",
+    "test": "nightwatch -c conf/nightwatch.conf.js -e firefox",
+    "bStack": "nightwatch -c conf/browserstack.conf.js -e browserstack",
     "eslint": "eslint . --fix --ext .js",
     "generate-report": "node reports/generateReport.js"
   },

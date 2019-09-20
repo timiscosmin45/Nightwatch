@@ -73,7 +73,7 @@ module.exports = {
           })
         })
       },
-      formInputFiller: function (startDate, endDate, timeSpent, project, _module, task, description) {
+      formInputsFiller: function (startDate, endDate, timeSpent, project, _module, task, description) {
         const currentDate = this.currentDate()
         startDate = endDate = currentDate
 
@@ -85,6 +85,20 @@ module.exports = {
         this.setValue(cssLib.leftNav.subsections.timesheet.module(), _module).api.pause(500)
         this.setValue(cssLib.leftNav.subsections.timesheet.task(), task).api.pause(500)
         return this.setValue(cssLib.leftNav.subsections.timesheet.description(), description).api.pause(500)
+      },
+
+      formInputsChecker: function (startDate, endDate, startTime, timeSpent, project, module, task, description) {
+        const currentDate = this.currentDate()
+        startDate = endDate = currentDate
+
+        this.api.pause(500)
+        this.assert.attributeContains(cssLib.leftNav.subsections.timesheet.startDate(), 'value', startDate).api.pause(500)
+        this.assert.attributeContains(cssLib.leftNav.subsections.timesheet.endDate(), 'value', endDate).api.pause(500)
+        this.assert.attributeContains(cssLib.leftNav.subsections.timesheet.timeSpent(), 'value', timeSpent).api.pause(500)
+        this.assert.containsText('div._3WAcV:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)', project).api.pause(500)
+        this.assert.containsText('div._3WAcV:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div', module).api.pause(500)
+        this.assert.attributeContains(cssLib.leftNav.subsections.timesheet.task(), 'value', task).api.pause(500)
+        return this.assert.attributeContains(cssLib.leftNav.subsections.timesheet.description(), 'value', description).api.pause(500)
       }
     }
 

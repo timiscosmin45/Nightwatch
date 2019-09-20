@@ -1,10 +1,9 @@
 const { client } = require('nightwatch-cucumber')
-const { Given, When, Then } = require('cucumber')
-const cssLib = require('../selectors/cssLib')
+const { When, Then } = require('cucumber')
+const cssLib = require('../helpers/cssLib/cssLib')
 const userProfile = client.page.userProfile()
 const generics = client.page.genericFunctions()
 const expect = require('chai').expect
-const assert = require('chai').assert
 
 Then(/^sets the language to english$/, () => {
   generics.languageToggle(cssLib.topNav.languages.english())
@@ -133,5 +132,4 @@ Then(/^the childe with the following data, firstname: (.*?), lastname: (.*?), bi
       })
     })
   })
-  return client.end()
 })

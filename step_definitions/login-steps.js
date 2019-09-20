@@ -2,7 +2,7 @@ const { client } = require('nightwatch-cucumber')
 const { Then, Given, When } = require('cucumber')
 const loginPage = client.page.loginPage()
 const generics = client.page.genericFunctions()
-const cssLib = require('../selectors/cssLib')
+const cssLib = require('../helpers/cssLib/cssLib')
 
 Given(/^the user opens the timesheet login page$/, () => { // parametrii fixi /^\
   return loginPage.navigate().api.waitForElementVisible(cssLib.body(), 10000, false)
@@ -30,8 +30,7 @@ Then(/^clicks on the Login button$/, () => {
 
 Then(/^the user should be logged-in$/, () => {
   return client.waitForElementVisible(cssLib.loginPage.logoutBtn(), 10000, false)
-  })
-
+})
 
 Then(/^the following error message: (.*?) should appear$/, (message) => {
   return generics.checkErrorMessage(cssLib.loginPage.errorMessage(), message)

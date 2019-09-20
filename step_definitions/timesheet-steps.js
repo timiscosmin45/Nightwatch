@@ -1,7 +1,6 @@
 const { client } = require('nightwatch-cucumber')
-const { Given, When, Then } = require('cucumber')
-const cssLib = require('../selectors/cssLib')
-const loginPage = client.page.loginPage()
+const { Then } = require('cucumber')
+const cssLib = require('../helpers/cssLib/cssLib')
 const timesheet = client.page.timesheet()
 const generics = client.page.genericFunctions()
 
@@ -32,12 +31,26 @@ Then(/^the user click on the `Work log` button from the top of the content box$/
   return client.click(cssLib.leftNav.subsections.timesheet.logWork())
 })
 
-Then(/^inserts the folowing data into the input fields, Start Date: (.*?), End date: (.*?), Start Time: (.*?), Time Spent: (.*?), Project: (.*?), Module: (.*?), Task: (.*?), Description: (.*?)$/, (startDate, endDate, startTime, timeSpent, project, _module, task, description) => {
+Then(/^inserts the folowing data into the input fields, Start Date: (.*?), End date: (.*?), Start Time: (.*?), Time Spent: (.*?), Project: (.*?), Module: (.*?), Task: (.*?), Description: (.*?)$/, (startDate, endDate, startTime, timeSpent, project, module, task, description) => {
   generics.formInputCleaner(cssLib.leftNav.subsections.timesheet.formInputFields())
-  timesheet.formInputFiller(startDate, endDate, timeSpent, project, _module, task, description)
+  timesheet.formInputsFiller(startDate, endDate, timeSpent, project, module, task, description)
   return timesheet.timePicker(startTime)
 })
 
 Then(/^clicks on the Save button$/, async () => {
   return client.click(cssLib.leftNav.subsections.timesheet.saveBtn())
+})
+
+Then(/^the work log with the following following data, Start Date: (.*?), End date: (.*?), Start Time: (.*?), Time Spent: (.*?), Project: (.*?), Module: (.*?), Task: (.*?), Description: (.*?) should be added$/, async (startDate, endDate, startTime, timeSpent, project, _module, task, description) => {
+   client.elements('css selector', cssLib.leftNav.subsections.timesheet.workLogRecord(), result => {
+    result.value.forEach(element => {
+      client.elementIdText(element.ELEMENT, output => {
+        if (output.value.includes(project)) {
+          client.elementIdClick(element.ELEMENT)
+        }
+      })
+    })
+  })
+  timesheet.formInputsChecker(startDate, endDate, startTime, timeSpent, project, _module, task, description)
+  return client.click('.red')
 })
