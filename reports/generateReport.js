@@ -1,4 +1,4 @@
-const reporter = require('cucumber-html-reporter')
+const reporter = require('cucumber-html-reporter');
 
 const options = {
   name: 'Internship',
@@ -15,8 +15,8 @@ const options = {
     Browser: 'Chrome',
     Platform: 'Windows 10',
     Parallel: 'Scenarios',
-    Executed: 'Remote'
-  }
-}
+    Executed: 'Remote',
+  },
+};
 
-reporter.generate(options)
+reporter.generate(options);

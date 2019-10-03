@@ -4,8 +4,9 @@
   "description": "Nightwatch Internship",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch -c conf/nightwatch.conf.js -e firefox",
+    "test": "nightwatch -c conf/nightwatch.conf.js --tag TEST_TIMESHEET -e firefox",
     "bStack": "nightwatch -c conf/browserstack.conf.js -e browserstack",
+    "docker": "nightwatch -c conf/nightwatch-docker-debug.conf.js -e firefox",
     "eslint": "eslint . --fix --ext .js",
     "generate-report": "node reports/generateReport.js"
   },
@@ -24,6 +25,8 @@
     "dotenv": "^8.1.0",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -33,6 +36,7 @@
     "nightwatch": "^0.9.21",
     "nightwatch-cucumber": "^9.1.3",
     "prettier": "^1.18.2",
-    "selenium-server": "^3.141.59"
+    "selenium-server": "^3.141.59",
+    "selenium-server-standalone-jar": "^3.7.1"
   }
 }

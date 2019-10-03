@@ -1,4 +1,4 @@
-@CreateChildren
+@TEST_TIMESHEET
 Feature: Create Children-Tests
 
   Scenario Outline: Add children - NegativeFlow
@@ -20,7 +20,7 @@ Feature: Create Children-Tests
     Examples:
       | firstname  | lastname   | gender | birthdate  | message                |
       | a!:_.3432a | 4343#E><:+ | Male   | 24.08.2060 | Specific error message |
-      
+
   Scenario Outline: Add children-Happy Flow
     Given the user is logged-in
     Then clicks on the user icon

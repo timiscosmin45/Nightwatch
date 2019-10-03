@@ -10,7 +10,7 @@ Feature: Login to the Timesheet application
       Then clicks on the Login button
       Then the user should be logged-in
       Then the user logs out
-   
+
       Examples:
          | title     | username       | password |
          | Timesheet | valentin.timis | test     |

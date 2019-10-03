@@ -1,5 +1,4 @@
 module.exports = {
-
   body: () => 'body',
 
   loginPage: {
@@ -8,14 +7,14 @@ module.exports = {
     loginBtn: () => 'button[type=submit]',
     logoutBtn: () => '.log.out.icon',
     errorMessageCloseIcon: () => '.grey.close.icon.mSFyz',
-    errorMessage: () => '._2s8_B'
+    errorMessage: () => '._2s8_B',
   },
   topNav: {
     languages: {
       selector: () => 'div.CH3x3:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > i',
       romanian: () => '.ro.flag',
-      english: () => '.us.flag'
-    }
+      english: () => '.us.flag',
+    },
   },
   leftNav: {
     menu: () => '.menu._1gq2q',
@@ -43,9 +42,9 @@ module.exports = {
         clock: () => 'span[style*="transform"]',
         timeOfTheDay: () => 'h3',
         okBtn: () => '[aria-label=OK]',
-        workLogRecord: () => '.col-xs-8.col-sm-10.col-xl-11.F3TPf'
-      }
-    }
+        workLogRecord: () => '.col-xs-8.col-sm-10.col-xl-11.F3TPf',
+      },
+    },
   },
   userProfile: {
     // specific page element used to validate the user persence
@@ -59,7 +58,7 @@ module.exports = {
       carNumber: () => 'input[name="carNumber"]',
       editBtn: () => '.ui.blue.icon.button.SUnZC',
       saveBtn: () => '.ui.blue.fluid.button',
-      displayerPData: () => '.col-xs-9'
+      displayerPData: () => '.col-xs-9',
     },
     childrenSection: {
       addBtn: () => '.ui.left.pointing.basic.label',
@@ -72,7 +71,7 @@ module.exports = {
       genderSelector: () => '.default',
       genderMale: () => 'div.visible:nth-child(4) > div:nth-child(2) > span',
       genderFemale: () => 'div.visible:nth-child(4) > div:nth-child(3) > span:nth-child(2)',
-      childrenSectionContent: () => 'div.container-fluid:nth-child(3) .row div '
-    }
-  }
-}
+      childrenSectionContent: () => 'div.container-fluid:nth-child(3) .row div ',
+    },
+  },
+};

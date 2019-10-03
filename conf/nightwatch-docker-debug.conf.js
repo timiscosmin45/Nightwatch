@@ -1,11 +1,11 @@
 const seleniumServer = require('selenium-server');
-const chromedriver = require('chromedriver');
-const geckodriver = require('geckodriver');
+const chromeDriver = require('chromedriver');
+const geckoDriver = require('geckodriver');
 
 require('nightwatch-cucumber')({
   cucumberArgs: [
     '--require',
-    'helpers/hooks/hooks.js',
+    'features/hooks/hooks.js',
     '--require',
     'step_definitions',
     '--format',
@@ -17,11 +17,6 @@ require('nightwatch-cucumber')({
 });
 
 module.exports = {
-  test_workers: {
-    enabled: false,
-    workers: 'auto',
-  },
-  detailed_output: true,
   output_folder: 'reports',
   custom_assertions_path: '',
   live_output: false,
@@ -29,19 +24,19 @@ module.exports = {
   page_objects_path: './page_objects',
 
   selenium: {
-    start_process: true,
+    start_process: false,
     server_path: seleniumServer.path,
     log_path: '',
     host: '127.0.0.1',
     port: 4444,
     cli_args: {
-      'webdriver.chrome.driver': chromedriver.path,
-      'webdriver.gecko.driver': geckodriver.path,
+      'webdriver.chrome.driver': chromeDriver.path,
+      'webdriver.gecko.driver': geckoDriver.path,
     },
   },
   test_settings: {
     chrome: {
-      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      //launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
       screenshots: {
         enabled: true,
         on_failure: true,
@@ -51,25 +46,33 @@ module.exports = {
         browserName: 'chrome',
         javascriptEnabled: true,
         acceptSslCerts: true,
+        loggingPrefs: {
+          browser: 'ALL',
+        },
       },
     },
-
     firefox: {
-      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      // launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      selenium_port: 4444,
+      selenium_host: '127.0.0.1',
       screenshots: {
         enabled: true,
         on_failure: true,
-        path: 'screenshots/firexox',
+        path: 'screenshots/firefox',
       },
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
         acceptSslCerts: true,
+        loggingPrefs: {
+          browser: 'ALL',
+        },
       },
     },
-
     firefox_headless: {
-      launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      //launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      selenium_port: 4444,
+      selenium_host: '127.0.0.1',
       screenshots: {
         enabled: true,
         on_failure: true,
@@ -82,11 +85,15 @@ module.exports = {
         'moz:firefoxOptions': {
           args: ['--headless'],
         },
+        loggingPrefs: {
+          browser: 'ALL',
+        },
       },
     },
-
     chrome_headless: {
       launch_url: 'http://192.168.88.76.xip.io:8091/#/login',
+      selenium_port: 4444,
+      selenium_host: '127.0.0.1',
       screenshots: {
         enabled: true,
         on_failure: true,
@@ -97,7 +104,10 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true,
         chromeOptions: {
-          args: ['--headless'],
+          args: ['headless'],
+        },
+        loggingPrefs: {
+          browser: 'ALL',
         },
       },
     },
